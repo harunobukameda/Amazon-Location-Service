@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "MapsReadOnly",
+            "Effect": "Allow",
+            "Action": [
+                "geo:GetMapStyleDescriptor",
+                "geo:GetMapGlyphs",
+                "geo:GetMapSprites",
+                "geo:GetMapTile"
+            ],
+            "Resource": "arn:aws:geo:ap-northeast-1:294963776963:map/explore.map",
+            "Condition": {
+                "ForAnyValue:StringLike": {
+                    "aws:referer": [
+                        "http://localhost*",
+                        "https://example.com/*",
+                        "https://*amazonaws.com/*"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+
+2.
+{
+  "payload": {
+    "deviceid": "GPS-Device-001",
+    "timestamp": 1608166810,
+    "location": {
+      "lat": 35.4569,
+      "long": 139.5976
+    }
+  }
+}
